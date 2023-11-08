@@ -1,0 +1,24 @@
+# dependencies
+node_modules
+
+# sst
+.sst
+.build
+
+# opennext
+.open-next
+
+# misc
+.DS_Store
+
+.env
+
+# local env files
+.env*.local
+
+# intellij
+.idea
+
+yarn-error.log
+
+cdk.context.json

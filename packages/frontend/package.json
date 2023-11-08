@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "version": "8.2.11",
+  "name": "example",
+  "scripts": {
+    "start": "next dev"
+  },
+  "dependencies": {
+    "@ethersproject/bignumber": "^5.6.0",
+    "@ethersproject/experimental": "^5.6.0",
+    "@ethersproject/providers": "^5.6.0",
+    "@ethersproject/units": "^5.7.0",
+    "@metamask/eth-sig-util": "^7.0.0",
+    "ethereumjs-util": "^7.1.5",
+    "@web3-react/core": "^8.2.3",
+    "@web3-react/eip1193": "^8.2.3",
+    "@web3-react/empty": "^8.2.3",
+    "@web3-react/metamask": "^8.2.4",
+    "@web3-react/network": "^8.2.3",
+    "@web3-react/types": "^8.2.3",
+    "@web3-react/url": "^8.2.3",
+    "@web3-react/walletconnect-v2": "^8.5.1",
+    "framer-motion": "^10.16.4",
+    "next": "^14.0.1",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.37"
+  }
+}
