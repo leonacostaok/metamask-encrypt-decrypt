@@ -1,8 +1,14 @@
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 import styled from "styled-components";
 
-export function Tab({isActive, children}:{isActive: boolean, children?: ReactNode}) {
-    return isActive ? <TabWrapper>{children}</TabWrapper> : (<></>)
+export function Tab({
+  isActive,
+  children,
+}: {
+  isActive: boolean;
+  children?: ReactNode;
+}) {
+  return isActive ? <TabWrapper>{children}</TabWrapper> : <></>;
 }
 
 const TabWrapper = styled.div`
@@ -17,4 +23,4 @@ const TabWrapper = styled.div`
     text-align: center;
     max-width: 500px;
   }
-`
+`;

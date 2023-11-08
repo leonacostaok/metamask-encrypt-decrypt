@@ -3,11 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "start": "cd packages/frontend && yarn start",
+    "start": "cd example && yarn start",
     "dev": "sst dev",
     "build": "sst build",
     "deploy": "sst deploy",

@@ -6,6 +6,7 @@ export default {
   config() {
     return {
       name: "metamask-encrypt-decrypt",
+      // profile: "metamask-encrypt-decrypt",
       region: "ap-southeast-1",
     };
   },

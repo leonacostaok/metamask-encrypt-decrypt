@@ -5,13 +5,13 @@ import { buildDomainName, HOSTED_ZONE } from "./Constants";
 export async function StaticSites(sc: StackContext) {
   // Deploy our React app
   const site = new StaticSite(sc.stack, "MetamaskEncryptDecryptApp", {
-    path: "packages/frontend",
+    path: "example",
     customDomain: {
       domainName: buildDomainName(sc.stack),
       hostedZone: HOSTED_ZONE,
     },
     buildCommand: "yarn build",
-    buildOutput: "build",
+    buildOutput: "out",
     environment: {},
   });
 

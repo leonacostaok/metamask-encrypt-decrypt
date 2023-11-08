@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "exclude": ["packages"],
+  "exclude": ["example"],
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "node"

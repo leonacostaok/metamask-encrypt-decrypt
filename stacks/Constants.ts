@@ -6,4 +6,4 @@ export const PRODUCTION_STAGE = "production";
 export const isProduction = (stack: Stack) => stack.stage === PRODUCTION_STAGE;
 
 export const buildDomainName = (stack: Stack) =>
-  isProduction(stack) ? HOSTED_ZONE : `${stack.stage}.${HOSTED_ZONE}`;
+  isProduction(stack) ? `metamask-encrypt-decrypt.${HOSTED_ZONE}` : `${stack.stage}.metamask-encrypt-decrypt.${HOSTED_ZONE}`;
