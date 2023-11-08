@@ -1,22 +1,33 @@
 import { Tab } from "./Tab";
-import {Text} from "./Text";
+import {Link, Text} from "./Text";
 import {TabOptions} from "../pages";
 import {styled} from "styled-components";
 import Image from 'next/image'
 
-export function HowTo({ isActive, setActiveTab }: {
+export function HowTo({ isActive }: {
   setActiveTab?: (el: TabOptions) => void
   isActive: boolean
 }) {
 
   return (
-    <Tab isActive={isActive}>
+    <Tab isActive={isActive} requiresConnection={false}>
         <HowToWrapper>
             <Text>
-                This project works with asymmetric cryptography to encrypt and decrypt messages.
+                The project is open-source and can be found in{' '}
+                <Link href="https://github.com/leonacostaok/metamask-encrypt-decrypt"
+                      rel="noopener noreferrer"
+                      target="_blank">
+                    GitHub
+                </Link>.
             </Text>
             <Text>
-              Encryption is a feature of asymmetric cryptography that allows us to share PRIVATE messages between known parties. Private messages, in this context, are messages no one else than the recipient should see.
+                It works with asymmetric cryptography to encrypt and decrypt messages.
+            </Text>
+            <Text>
+              Encryption is a feature of asymmetric cryptography that allows us to share PRIVATE messages between known parties.
+            </Text>
+            <Text>
+                Private messages, in this context, are messages no one else than the recipient should see.
             </Text>
             <Text>
                 If I want to send a private message to a friend, and only for him to see that message, then I will encrypt it with his public key, and he will be able to decrypt it with his private key.
@@ -40,6 +51,10 @@ export function HowTo({ isActive, setActiveTab }: {
 
             <Text>
               This process is only used to share information that should not be public (it is masked behind an encryption), and no one but the person who has the message and then one that received the message can see it otherwise.
+            </Text>
+
+            <Text>
+               This app does not have access to your private key, and will interact with your wallet provider for the decryption of the messages.
             </Text>
         </HowToWrapper>
     </Tab>

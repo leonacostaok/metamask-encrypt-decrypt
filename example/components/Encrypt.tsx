@@ -45,7 +45,7 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
     setEncryptedMessage(null);
   };
   return (
-    <Tab isActive={isActive}>
+    <Tab isActive={isActive} requiresConnection={true}>
       {encryptedMessage ? (
         <>
           <Text>Encrypted message</Text>

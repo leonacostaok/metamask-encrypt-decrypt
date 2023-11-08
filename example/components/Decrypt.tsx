@@ -34,7 +34,7 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
     setMessage(null);
   };
   return (
-    <Tab isActive={isActive}>
+    <Tab isActive={isActive} requiresConnection={true}>
       {message ? (
         <>
           <Text>This is your decrypted message</Text>

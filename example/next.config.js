@@ -3,6 +3,7 @@
  */
 const nextConfig = {
   output: 'export',
+  images: {unoptimized: true},
   env: {
     infuraKey: process.env.INFURA_KEY,
     alchemyKey: process.env.ALCHEMY_KEY,

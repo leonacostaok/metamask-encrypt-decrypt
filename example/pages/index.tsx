@@ -35,34 +35,31 @@ const tabsList: TabType[] = [
   { tab: TabOptions.DECRYPT, name: "Decrypt", content: Decrypt },
 ];
 export default function Home() {
-  const { account } = useWeb3React();
   const [activeTab, setActiveTab] = useState(TabOptions.HOW_TO);
   return (
-    <>
-      {account && (
-          <ScreenContainer>
-            <TabsSelector>
-              {tabsList.map((item) => (
-                  <TabButton
-                      active={activeTab === item.tab}
-                      onClick={() => setActiveTab(item.tab)}
-                  >
-                    {item.name}
-                  </TabButton>
-              ))}
-            </TabsSelector>
-            <Tabs>
-              <TabContent>
-                {tabsList.map((item) => (
-                    <item.content isActive={activeTab === item.tab}
-                                  setActiveTab={setActiveTab}
-                    />
-                ))}
-              </TabContent>
-            </Tabs>
-          </ScreenContainer>
-      )}
-    </>
+    <ScreenContainer>
+      <TabsSelector>
+        {tabsList.map((item) => (
+            <TabButton
+                key={`tab-button-${item.name}`}
+                active={activeTab === item.tab}
+                onClick={() => setActiveTab(item.tab)}
+            >
+              {item.name}
+            </TabButton>
+        ))}
+      </TabsSelector>
+      <Tabs>
+        <TabContent>
+          {tabsList.map((item) => (
+              <item.content key={`tab-content-${item.name}`}
+                            isActive={activeTab === item.tab}
+                            setActiveTab={setActiveTab}
+              />
+          ))}
+        </TabContent>
+      </Tabs>
+    </ScreenContainer>
   );
 }
 

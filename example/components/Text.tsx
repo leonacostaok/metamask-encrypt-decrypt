@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import NextLink from 'next/link'
 
 export const Text = styled.p`
   text-align: center;
@@ -28,6 +29,19 @@ export const TextRed = styled.p`
 `;
 
 export const LinkText = styled.span`
+     text-align: center;
+  line-height: 1.4;
+  text-decoration: underline;
+  color:white;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  &:hover {
+    color: rgb(42, 196, 231);
+    cursor: pointer !important;
+  }
+`
+
+export const Link = styled(NextLink)`
      text-align: center;
   line-height: 1.4;
   text-decoration: underline;

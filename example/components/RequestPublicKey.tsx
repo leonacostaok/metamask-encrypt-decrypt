@@ -20,7 +20,7 @@ export function RequestPublicKey({ isActive }: { isActive: boolean }) {
     setPublicKey(await provider.send("eth_getEncryptionPublicKey", [account]));
   };
   return (
-    <Tab isActive={isActive}>
+    <Tab isActive={isActive} requiresConnection={true}>
       {publicKey ? (
         <>
           <Text>This is your public key</Text>
