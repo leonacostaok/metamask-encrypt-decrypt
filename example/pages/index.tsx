@@ -74,19 +74,48 @@ const Tabs = styled.div`
 `;
 const TabsSelector = styled.div`
   display: flex;
+  width: 50%;
   flex-direction: row;
   align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
   div:first-of-type {
     border-radius: 20px 0 0 0;
   }
   div:last-of-type {
     border-radius: 0 20px 0 0;
   }
+
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+    div:first-of-type {
+      border-radius: 20px 20px 0 0;
+    }
+    div:last-of-type {
+      border-radius: 0 0 0 0;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+    div:first-of-type {
+      border-radius: 20px 20px 0 0;
+    }
+    div:last-of-type {
+      border-radius: 0 0 0 0;
+    }
+  }
+  @media only screen and (max-width: 575px){
+    width: 95%;
+  }
 `;
 const TabButton = styled.div<{ active: boolean }>`
   margin: 0;
   background-color: rgba(255, 255, 255, 0.11);
-  padding: 10px 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
   color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   transition: all 0.3s ease-in;
@@ -107,6 +136,10 @@ const TabButton = styled.div<{ active: boolean }>`
 `;
 const TabContent = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
   width: 50%;
+
+  @media only screen and (max-width: 575px){
+    width: 95%;
+  }
 `;

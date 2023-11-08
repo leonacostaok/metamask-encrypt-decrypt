@@ -23,6 +23,10 @@ const FooterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 575px){
+    position: relative;
+    bottom: unset;
+  }
 `
 
 const FooterWrapper = styled.div`
