@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import {Text} from "./Text";
+import {LinkText, Text} from "./Text";
 import {MainHeading} from "./Heading";
 import MetaMaskCard from "./MetaMaskCard";
 import React from "react";
@@ -7,7 +7,7 @@ import {useWeb3React} from "@web3-react/core";
 import {shortenAddress} from "../utils";
 
 export const Header = () => {
-    const { account } = useWeb3React();
+    const { account, connector } = useWeb3React();
     return (
         <HeaderContainer>
             <HeaderWrapper>
@@ -20,7 +20,18 @@ export const Header = () => {
                         <MetaMaskCard />
                     </ConnectSection>
                 ) : (
-                    <Text>Connected with account: {shortenAddress(account)}</Text>
+                    <>
+                        <Text>
+                            Connected as: {shortenAddress(account)}
+                            <br/>
+                            <LinkText onClick={() => {
+                                if (connector?.deactivate) connector.deactivate()
+                                if (connector?.resetState) connector.resetState()
+                            }}>
+                                Disconnect
+                            </LinkText>
+                        </Text>
+                    </>
                 )}
             </HeaderWrapper>
         </HeaderContainer>

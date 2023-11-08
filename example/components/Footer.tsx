@@ -6,8 +6,9 @@ export const Footer = () => {
         <FooterContainer>
             <FooterWrapper>
                 <Text>
-                    This project was built by a developer to contribute to the amazing web3 community with no direct affiliation with https://metamask.io/. If you found this helpful in any way, feel free to share the ❤️.
+                    This project was built by developers to contribute to the amazing web3 community with no direct affiliation with https://metamask.io/. If you found this helpful in any way, feel free to share the ❤️.
                 </Text>
+                <br />
                 <BoldText>
                     ETH: 0xFd072083887bFcF8aEb8F37991c11c7743113374
                 </BoldText>
@@ -17,6 +18,7 @@ export const Footer = () => {
 }
 
 const FooterContainer = styled.div`
+  height: 150px;
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -78,6 +78,7 @@ const AppContainer = styled.main`
   margin: -8px;
   font-style: normal;
   line-height: normal;
+  height:100%;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
 `
@@ -86,9 +87,10 @@ const MainContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   gap: 20px;
-  min-height: 100vh;
+  min-height:100%;
+  padding-bottom: 150px;
 `
 
 const Background = styled.div`
@@ -104,11 +106,10 @@ const Background = styled.div`
       background-position: 0 0;
     }
   }
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   margin: auto;
-  top: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;
   background: fixed linear-gradient(315deg, #07172E 3%, #0c2b57 38%, #1659b7 68%, #3e82e1 98%);

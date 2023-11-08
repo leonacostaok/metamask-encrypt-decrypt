@@ -1,17 +1,17 @@
 import { useWeb3React } from "@web3-react/core";
 import { Decrypt } from "components/Decrypt";
 import { Encrypt } from "components/Encrypt";
-import MetaMaskCard from "components/MetaMaskCard";
 import { RequestPublicKey } from "components/RequestPublicKey";
 import { Tab } from "components/Tab";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import {Text} from "../components/Text";
+import {HowTo} from "../components/HowTo";
 
-enum TabOptions {
+export enum TabOptions {
   ENCRYPT,
   DECRYPT,
   REQUEST_PUBLIC_KEY,
+  HOW_TO
 }
 
 interface TabType {
@@ -22,6 +22,11 @@ interface TabType {
 
 const tabsList: TabType[] = [
   {
+    tab: TabOptions.HOW_TO,
+    name: "How to",
+    content: HowTo,
+  },
+  {
     tab: TabOptions.REQUEST_PUBLIC_KEY,
     name: "Request Public Key",
     content: RequestPublicKey,
@@ -31,7 +36,7 @@ const tabsList: TabType[] = [
 ];
 export default function Home() {
   const { account } = useWeb3React();
-  const [activeTab, setActiveTab] = useState(TabOptions.ENCRYPT);
+  const [activeTab, setActiveTab] = useState(TabOptions.HOW_TO);
   return (
     <>
       {account && (
@@ -49,7 +54,9 @@ export default function Home() {
             <Tabs>
               <TabContent>
                 {tabsList.map((item) => (
-                    <item.content isActive={activeTab === item.tab} />
+                    <item.content isActive={activeTab === item.tab}
+                                  setActiveTab={setActiveTab}
+                    />
                 ))}
               </TabContent>
             </Tabs>
@@ -74,7 +81,7 @@ const Tabs = styled.div`
 `;
 const TabsSelector = styled.div`
   display: flex;
-  width: 50%;
+  width: 60%;
   flex-direction: row;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -87,17 +94,13 @@ const TabsSelector = styled.div`
     border-radius: 0 20px 0 0;
   }
 
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column;
-    div:first-of-type {
-      border-radius: 20px 20px 0 0;
-    }
-    div:last-of-type {
-      border-radius: 0 0 0 0;
-    }
+  @media only screen and (max-width: 1200px) {
+    width: 75%;
   }
+
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
+    width: 85%;
     div:first-of-type {
       border-radius: 20px 20px 0 0;
     }
@@ -137,8 +140,15 @@ const TabButton = styled.div<{ active: boolean }>`
 const TabContent = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0 0 20px 20px;
-  width: 50%;
-
+  width: 60%;
+  
+  @media only screen and (max-width: 1200px) {
+    width: 75%;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    width: 85%;
+  }
   @media only screen and (max-width: 575px){
     width: 95%;
   }
