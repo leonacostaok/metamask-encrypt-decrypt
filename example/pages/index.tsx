@@ -6,6 +6,7 @@ import { RequestPublicKey } from "components/RequestPublicKey";
 import { Tab } from "components/Tab";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import {Text} from "../components/Text";
 
 enum TabOptions {
   ENCRYPT,
@@ -33,40 +34,42 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(TabOptions.ENCRYPT);
   return (
     <>
-      {account ? (
-        <Tabs>
-          <p>Connected with account: {account}</p>
-          <TabsSelector>
-            {tabsList.map((item) => (
-              <TabButton
-                active={activeTab === item.tab}
-                onClick={() => setActiveTab(item.tab)}
-              >
-                {item.name}
-              </TabButton>
-            ))}
-          </TabsSelector>
-          <TabContent>
-            {tabsList.map((item) => (
-              <item.content isActive={activeTab === item.tab} />
-            ))}
-          </TabContent>
-        </Tabs>
-      ) : (
-        <Tabs>
-          <Tab isActive={true}>
-            <MetaMaskCard />
-          </Tab>
-        </Tabs>
+      {account && (
+          <ScreenContainer>
+            <TabsSelector>
+              {tabsList.map((item) => (
+                  <TabButton
+                      active={activeTab === item.tab}
+                      onClick={() => setActiveTab(item.tab)}
+                  >
+                    {item.name}
+                  </TabButton>
+              ))}
+            </TabsSelector>
+            <Tabs>
+              <TabContent>
+                {tabsList.map((item) => (
+                    <item.content isActive={activeTab === item.tab} />
+                ))}
+              </TabContent>
+            </Tabs>
+          </ScreenContainer>
       )}
     </>
   );
 }
 
+const ScreenContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 const Tabs = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 20px;
 `;
 const TabsSelector = styled.div`
@@ -87,7 +90,5 @@ const TabButton = styled.button<{ active: boolean }>`
 `;
 const TabContent = styled.div`
   border: solid 1px black;
-  max-width: 700px;
   width: 50%;
-  height: 300px;
 `;

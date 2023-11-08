@@ -5,6 +5,7 @@ import { getName } from "../utils";
 import { Accounts } from "./Accounts";
 import { ConnectWithSelect } from "./ConnectWithSelect";
 import { Status } from "./Status";
+import styled from "styled-components";
 
 interface Props {
   connector: MetaMask;
@@ -28,26 +29,10 @@ export function Card({
   provider,
 }: Props) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        width: "20rem",
-        padding: "1rem",
-        margin: "1rem",
-        overflow: "auto",
-        border: "1px solid",
-        borderRadius: "1rem",
-      }}
-    >
+    <CardWrapper>
       <b>{getName(connector)}</b>
-      <div style={{ marginBottom: "1rem" }}>
-        <Status isActivating={isActivating} isActive={isActive} error={error} />
-      </div>
-      <div style={{ marginBottom: "1rem" }}>
-        <Accounts accounts={accounts} provider={provider} ENSNames={ENSNames} />
-      </div>
+      <Status isActivating={isActivating} isActive={isActive} error={error} />
+      <Accounts accounts={accounts} provider={provider} ENSNames={ENSNames} />
       <ConnectWithSelect
         connector={connector}
         isActivating={isActivating}
@@ -55,6 +40,19 @@ export function Card({
         error={error}
         setError={setError}
       />
-    </div>
+    </CardWrapper>
   );
 }
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  border: 1px solid;
+  border-radius: 1rem;
+`

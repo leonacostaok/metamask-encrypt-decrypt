@@ -3,8 +3,12 @@ import { MetaMask } from "@web3-react/metamask";
 import { AppProps } from "next/app";
 import React, { useEffect } from "react";
 import Script from 'next/script'
+import Head from 'next/head'
 
 import { hooks as metaMaskHooks, metaMask } from "../connectors/metaMask";
+import {Footer} from "../components/Footer";
+import styled from "styled-components";
+import {Header} from "../components/Header";
 
 const connectors: [MetaMask, Web3ReactHooks][] = [[metaMask, metaMaskHooks]];
 
@@ -32,8 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   return (
       <>
-
-        <head>
+        <Head>
           <title>MetaMask Encrypt/Decrypt</title>
           <meta name="description" content="MetaMask Encrypt and decrypt tools" />
           <meta property="og:title" content="MetaMask Encrypt/Decrypt" />
@@ -50,10 +53,18 @@ export default function App({ Component, pageProps }: AppProps) {
             gtag('config', 'G-YVFR36G469');
           `}
           </Script>
-        </head>
-        <Web3ReactProvider connectors={connectors}>
-          <Component {...pageProps} />
-        </Web3ReactProvider>
+        </Head>
+        <MainContainer>
+          <Web3ReactProvider connectors={connectors}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </Web3ReactProvider>
+        </MainContainer>
       </>
   );
 }
+
+const MainContainer = styled.main`
+  min-height: calc(100vh - 16px);
+`

@@ -10,19 +10,17 @@ export function Status({
   error?: Error;
 }) {
   return (
-    <div>
+    <>
       {error ? (
-        <>
+        <div>
           🔴 {error.name ?? "Error"}
           {error.message ? `: ${error.message}` : null}
-        </>
+        </div>
       ) : isActivating ? (
-        <>🟡 Connecting</>
-      ) : isActive ? (
-        <>🟢 Connected</>
-      ) : (
-        <>⚪️ Disconnected</>
+        <div>🟡 Connecting</div>
+      ) : isActive && (
+        <div>🟢 Connected</div>
       )}
-    </div>
+    </>
   );
 }

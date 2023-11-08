@@ -64,13 +64,11 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
 }
 
 const TextArea = styled.textarea`
-  max-width: 600px;
   width: 100%;
   height: 150px;
 `;
 
 const Input = styled.input`
-  max-width: 500px;
   width: 100%;
 `;
 
