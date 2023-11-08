@@ -1,8 +1,10 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
-import styled from "styled-components";
 
 import { Tab } from "./Tab";
+import {Text, TextRed} from "./Text";
+import {Button} from "./Button";
+import {TextArea} from "./TextArea";
 
 export function Decrypt({ isActive }: { isActive: boolean }) {
   const { account, provider } = useWeb3React();
@@ -35,7 +37,7 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
     <Tab isActive={isActive}>
       {message ? (
         <>
-          <label htmlFor="message">This is your decrypted message</label>
+          <Text>This is your decrypted message</Text>
           <TextArea
             id="message"
             autoComplete="off"
@@ -43,11 +45,11 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
             placeholder="Lorem impsum ..."
             value={message}
           />
-          <button onClick={handleClear}>Clear</button>
+          <Button onClick={handleClear}>Clear</Button>
         </>
       ) : (
         <>
-          <label htmlFor="encrypted-message">Enter an encrypted message</label>
+          <Text>Enter an encrypted message</Text>
           <TextArea
             id="encrypted-message"
             autoComplete="off"
@@ -55,7 +57,7 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
             value={encryptedMessage}
             onChange={(e) => setEncryptedMessage(e.target.value)}
           />
-          <button onClick={handleDecrypt}>Decrypt</button>
+          <Button onClick={handleDecrypt}>Decrypt</Button>
         </>
       )}
       {error && <TextRed>{error}</TextRed>}
@@ -63,15 +65,4 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
   );
 }
 
-const TextArea = styled.textarea`
-  width: 100%;
-  height: 150px;
-`;
 
-const Input = styled.input`
-  width: 100%;
-`;
-
-const TextRed = styled.p`
-  color: red;
-`;

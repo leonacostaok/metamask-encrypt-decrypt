@@ -6,6 +6,7 @@ import { Accounts } from "./Accounts";
 import { ConnectWithSelect } from "./ConnectWithSelect";
 import { Status } from "./Status";
 import styled from "styled-components";
+import {BoldText} from "./Text";
 
 interface Props {
   connector: MetaMask;
@@ -30,7 +31,7 @@ export function Card({
 }: Props) {
   return (
     <CardWrapper>
-      <b>{getName(connector)}</b>
+      <BoldText>{getName(connector)}</BoldText>
       <Status isActivating={isActivating} isActive={isActive} error={error} />
       <Accounts accounts={accounts} provider={provider} ENSNames={ENSNames} />
       <ConnectWithSelect
@@ -50,9 +51,9 @@ const CardWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 20rem;
-  padding: 1rem;
+  padding: 0.5rem 2rem;
   margin: 1rem;
   overflow: auto;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 1rem;
 `

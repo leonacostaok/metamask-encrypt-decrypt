@@ -17,7 +17,7 @@ const TabWrapper = styled.div`
   padding: 5vh 5vw;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   p {
     text-align: center;
     max-width: 500px;

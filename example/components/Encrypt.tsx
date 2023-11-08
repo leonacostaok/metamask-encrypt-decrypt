@@ -1,9 +1,12 @@
 import { encrypt } from "@metamask/eth-sig-util";
 import { bufferToHex } from "ethereumjs-util";
 import { useState } from "react";
-import styled from "styled-components";
 
 import { Tab } from "./Tab";
+import {Button} from "./Button";
+import {Text, TextRed} from "./Text";
+import {Input} from "./Input";
+import {TextArea} from "./TextArea";
 
 export function Encrypt({ isActive }: { isActive: boolean }) {
   const [publicKey, setPublicKey] = useState<string | null>(null);
@@ -45,7 +48,7 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
     <Tab isActive={isActive}>
       {encryptedMessage ? (
         <>
-          <label htmlFor="encrypted-message">Encrypted message</label>
+          <Text>Encrypted message</Text>
           <TextArea
             id="encrypted-message"
             autoComplete="off"
@@ -54,13 +57,13 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
             value={encryptedMessage}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button onClick={handleClear}>Clear</button>
+          <Button onClick={handleClear}>Clear</Button>
         </>
       ) : (
         <>
-          <label htmlFor="public-key">
+          <Text>
             Enter the public key of the destination user
-          </label>
+          </Text>
           <Input
             type={"text"}
             id="public-key"
@@ -69,7 +72,7 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
             value={publicKey}
             onChange={(e) => setPublicKey(e.target.value)}
           />
-          <label htmlFor="message">Enter a message</label>
+          <Text>Enter a message</Text>
           <TextArea
             id="message"
             autoComplete="off"
@@ -77,7 +80,7 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button onClick={handleEncrypt}>Encrypt</button>
+          <Button onClick={handleEncrypt}>Encrypt</Button>
         </>
       )}
       {error && <TextRed>{error}</TextRed>}
@@ -85,15 +88,3 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
   );
 }
 
-const TextArea = styled.textarea`
-  width: 100%;
-  height: 150px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-`;
-
-const TextRed = styled.p`
-  color: red;
-`;

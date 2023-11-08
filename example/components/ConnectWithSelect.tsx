@@ -1,6 +1,7 @@
 import type { Web3ReactHooks } from "@web3-react/core";
 import type { MetaMask } from "@web3-react/metamask";
 import { useCallback } from "react";
+import {Button} from "./Button";
 
 export function ConnectWithSelect({
   connector,
@@ -28,9 +29,9 @@ export function ConnectWithSelect({
     <div style={{ display: "flex", flexDirection: "column" }}>
       {isActive ? (
         error ? (
-          <button onClick={() => handleConnect()}>Try again?</button>
+          <Button onClick={() => handleConnect()}>Try again?</Button>
         ) : (
-          <button
+          <Button
             onClick={() => {
               if (connector?.deactivate) {
                 void connector.deactivate();
@@ -40,12 +41,12 @@ export function ConnectWithSelect({
             }}
           >
             Disconnect
-          </button>
+          </Button>
         )
       ) : (
-        <button onClick={() => handleConnect()} disabled={isActivating}>
+        <Button onClick={() => handleConnect()} disabled={isActivating}>
           {error ? "Try again?" : "Connect"}
-        </button>
+        </Button>
       )}
     </div>
   );

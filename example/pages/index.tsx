@@ -23,11 +23,11 @@ interface TabType {
 const tabsList: TabType[] = [
   {
     tab: TabOptions.REQUEST_PUBLIC_KEY,
-    name: "REQUEST_PUBLIC_KEY",
+    name: "Request Public Key",
     content: RequestPublicKey,
   },
-  { tab: TabOptions.ENCRYPT, name: "ENCRYPT", content: Encrypt },
-  { tab: TabOptions.DECRYPT, name: "DECRYPT", content: Decrypt },
+  { tab: TabOptions.ENCRYPT, name: "Encrypt", content: Encrypt },
+  { tab: TabOptions.DECRYPT, name: "Decrypt", content: Decrypt },
 ];
 export default function Home() {
   const { account } = useWeb3React();
@@ -76,19 +76,37 @@ const TabsSelector = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  div:first-of-type {
+    border-radius: 20px 0 0 0;
+  }
+  div:last-of-type {
+    border-radius: 0 20px 0 0;
+  }
 `;
-const TabButton = styled.button<{ active: boolean }>`
+const TabButton = styled.div<{ active: boolean }>`
   margin: 0;
-  background-color: #cecece;
+  background-color: rgba(255, 255, 255, 0.11);
   padding: 10px 40px;
-  ${({ active }) =>
-    active &&
-    css`
-      background-color: white;
-      font-weight: bold;
-    `}
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    background-color: rgb(42, 196, 231);
+    color: white;
+    font-weight: bold;
+  }
+
+  ${({active}) =>
+      active &&
+      css`
+        background-color: rgb(42, 137, 231);
+        color: white;
+        font-weight: bold;
+      `}
 `;
 const TabContent = styled.div`
-  border: solid 1px black;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
   width: 50%;
 `;

@@ -4,6 +4,7 @@ import {MainHeading} from "./Heading";
 import MetaMaskCard from "./MetaMaskCard";
 import React from "react";
 import {useWeb3React} from "@web3-react/core";
+import {shortenAddress} from "../utils";
 
 export const Header = () => {
     const { account } = useWeb3React();
@@ -15,11 +16,11 @@ export const Header = () => {
                 </MainHeading>
                 {!account ? (
                     <ConnectSection>
-                        <p>Use the section below to connect to MetaMask wallet provider</p>
+                        <Text>Use the section below to connect to MetaMask wallet provider</Text>
                         <MetaMaskCard />
                     </ConnectSection>
                 ) : (
-                    <Text>Connected with account: {account}</Text>
+                    <Text>Connected with account: {shortenAddress(account)}</Text>
                 )}
             </HeaderWrapper>
         </HeaderContainer>
