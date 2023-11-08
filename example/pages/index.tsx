@@ -1,7 +1,6 @@
-import { useWeb3React } from "@web3-react/core";
 import { Decrypt } from "components/Decrypt";
 import { Encrypt } from "components/Encrypt";
-import { RequestPublicKey } from "components/RequestPublicKey";
+import { GetPublicKey } from "components/GetPublicKey";
 import { Tab } from "components/Tab";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
@@ -10,7 +9,7 @@ import {HowTo} from "../components/HowTo";
 export enum TabOptions {
   ENCRYPT,
   DECRYPT,
-  REQUEST_PUBLIC_KEY,
+  GET_PUBLIC_KEY,
   HOW_TO
 }
 
@@ -27,9 +26,9 @@ const tabsList: TabType[] = [
     content: HowTo,
   },
   {
-    tab: TabOptions.REQUEST_PUBLIC_KEY,
-    name: "Request Public Key",
-    content: RequestPublicKey,
+    tab: TabOptions.GET_PUBLIC_KEY,
+    name: "Get Public Key",
+    content: GetPublicKey,
   },
   { tab: TabOptions.ENCRYPT, name: "Encrypt", content: Encrypt },
   { tab: TabOptions.DECRYPT, name: "Decrypt", content: Decrypt },

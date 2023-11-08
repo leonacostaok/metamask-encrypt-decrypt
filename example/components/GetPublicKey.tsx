@@ -7,7 +7,7 @@ import {Text} from "./Text";
 import {Heading} from "./Heading";
 import {Button} from "./Button";
 
-export function RequestPublicKey({ isActive }: { isActive: boolean }) {
+export function GetPublicKey({ isActive }: { isActive: boolean }) {
   const { account, provider } = useWeb3React();
   const [publicKey, setPublicKey] = useState<string | null>(null);
   const [copied, setCopied] = useState(false)
