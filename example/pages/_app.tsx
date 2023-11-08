@@ -4,7 +4,6 @@ import { AppProps } from "next/app";
 import React, { useEffect } from "react";
 
 import { hooks as metaMaskHooks, metaMask } from "../connectors/metaMask";
-import ModalConnectProvider from "../providers/ModalConnectProvider";
 
 const connectors: [MetaMask, Web3ReactHooks][] = [[metaMask, metaMaskHooks]];
 
@@ -32,9 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <Web3ReactProvider connectors={connectors}>
-      <ModalConnectProvider>
-        <Component {...pageProps} />
-      </ModalConnectProvider>
+      <Component {...pageProps} />
     </Web3ReactProvider>
   );
 }

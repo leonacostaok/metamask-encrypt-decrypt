@@ -33,6 +33,14 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(TabOptions.ENCRYPT);
   return (
     <>
+      <head>
+        <title>MetaMask Encrypt/Decrypt</title>
+        <meta name="description" content="MetaMask Encrypt and decrypt tools" />
+        <meta property="og:title" content="MetaMask Encrypt/Decrypt" />
+        <meta property="og:description" content="MetaMask Encrypt and decrypt tools" />
+        <meta property="og:url" content="https://metamask-encrypt-decrypt.dandelionlabs.io/" />
+        <meta property="og:type" content="website" />
+      </head>
       {account ? (
         <Tabs>
           <p>Connected with account: {account}</p>
