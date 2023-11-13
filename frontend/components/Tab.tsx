@@ -25,7 +25,7 @@ export function Tab({
       <ConnectSection>
         <Text>This section requires authentication, please connect to a wallet provider from the list below to continue</Text>
         <MetaMaskCard />
-        {/*<WalletConnectCard />*/}
+        {/*<WalletConnectCard /> todo: request public key and decrypt functions do not work on mobile*/}
       </ConnectSection>
   ) : <></>;
 }
