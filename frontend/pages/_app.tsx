@@ -44,7 +44,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <>
         <Head>
           <title>MetaMask Encrypt/Decrypt</title>
-          <meta name="description" content="MetaMask Encrypt and decrypt tools" />
+          <meta name="keywords" content="metamask,encrypt,decrypt,web3-encryption,web3"/>
+          <meta name="title" content="MetaMask Encrypt and Decrypt tools" />
+          <meta name="description" content="MetaMask Encrypt and decrypt site allows web3 users to share sensitive information securely end to end." />
           <meta property="og:title" content="MetaMask Encrypt/Decrypt" />
           <meta property="og:description" content="MetaMask Encrypt and decrypt tools" />
           <meta property="og:url" content="https://metamask-encrypt-decrypt.dandelionlabs.io/" />
