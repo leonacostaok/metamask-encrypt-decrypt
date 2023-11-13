@@ -4,6 +4,7 @@ import {TabOptions} from "../pages";
 import {useWeb3React} from "@web3-react/core";
 import {Text} from "./Text";
 import MetaMaskCard from "./MetaMaskCard";
+import WalletConnectCard from "./WalletConnectCard";
 
 export function Tab({
   isActive,
@@ -24,6 +25,7 @@ export function Tab({
       <ConnectSection>
         <Text>This section requires authentication, please connect to a wallet provider from the list below to continue</Text>
         <MetaMaskCard />
+        {/*<WalletConnectCard />*/}
       </ConnectSection>
   ) : <></>;
 }

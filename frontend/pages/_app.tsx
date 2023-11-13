@@ -1,16 +1,21 @@
 import { Web3ReactHooks, Web3ReactProvider } from "@web3-react/core";
 import { MetaMask } from "@web3-react/metamask";
+import { WalletConnect } from "@web3-react/walletconnect-v2";
 import { AppProps } from "next/app";
 import React, { useEffect } from "react";
 import Script from 'next/script'
 import Head from 'next/head'
 
 import { hooks as metaMaskHooks, metaMask } from "../connectors/metaMask";
+import { hooks as walletConnectHooks, walletConnect } from "../connectors/walletConnect";
 import {Footer} from "../components/Footer";
 import styled from "styled-components";
 import {Header} from "../components/Header";
 
-const connectors: [MetaMask, Web3ReactHooks][] = [[metaMask, metaMaskHooks]];
+const connectors: [WalletConnect | MetaMask, Web3ReactHooks][] = [
+      [walletConnect, walletConnectHooks],
+      [metaMask, metaMaskHooks]
+];
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -19,7 +24,8 @@ export default function App({ Component, pageProps }: AppProps) {
       try {
         if (provider === "MetaMask") {
           await metaMask.connectEagerly();
-        }
+        } else if (provider === "WalletConnect")
+          await walletConnect.connectEagerly()
       } catch {
         console.log("Re-connection Failed");
       }

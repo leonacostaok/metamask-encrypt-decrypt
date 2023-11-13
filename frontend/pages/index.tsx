@@ -41,7 +41,7 @@ export default function Home() {
         {tabsList.map((item) => (
             <TabButton
                 key={`tab-button-${item.name}`}
-                active={activeTab === item.tab}
+                className={activeTab === item.tab ? 'active' : ''}
                 onClick={() => setActiveTab(item.tab)}
             >
               {item.name}
@@ -108,7 +108,7 @@ const TabsSelector = styled.div`
     width: 95%;
   }
 `;
-const TabButton = styled.div<{ active: boolean }>`
+const TabButton = styled.div`
   margin: 0;
   background-color: rgba(255, 255, 255, 0.11);
   padding-top: 10px;
@@ -125,13 +125,11 @@ const TabButton = styled.div<{ active: boolean }>`
     font-weight: bold;
   }
 
-  ${({active}) =>
-      active &&
-      css`
-        background-color: rgb(42, 137, 231);
-        color: white;
-        font-weight: bold;
-      `}
+  &.active {
+    background-color: rgb(42, 137, 231);
+    color: white;
+    font-weight: bold;
+  }
 `;
 const TabContent = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);

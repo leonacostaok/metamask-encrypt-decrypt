@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Tab } from "./Tab";
 import {Button} from "./Button";
-import {Text, TextRed} from "./Text";
+import {Text, TextError} from "./Text";
 import {Input} from "./Input";
 import {TextArea} from "./TextArea";
 
@@ -83,7 +83,7 @@ export function Encrypt({ isActive }: { isActive: boolean }) {
           <Button onClick={handleEncrypt}>Encrypt</Button>
         </>
       )}
-      {error && <TextRed>{error}</TextRed>}
+      {error && <TextError>{error}</TextError>}
     </Tab>
   );
 }

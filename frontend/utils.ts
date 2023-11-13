@@ -1,10 +1,14 @@
 import { MetaMask } from "@web3-react/metamask";
+import { WalletConnect } from "@web3-react/walletconnect-v2";
 import type { Connector } from "@web3-react/types";
 
-export function getName(connector: Connector) {
+export function getConnectorName(connector: Connector) {
   if (connector instanceof MetaMask) return "MetaMask";
+  if (connector instanceof WalletConnect) return 'WalletConnect'
   return "Unknown";
 }
+
+export const isMetamask = (connector: Connector) => connector instanceof MetaMask;
 
 import { getAddress } from '@ethersproject/address'
 

@@ -22,8 +22,14 @@ export const BoldText = styled.p`
   margin-block-end: 0;
 `
 
-export const TextRed = styled.p`
+export const TextError = styled.p`
   color: red;
+  margin-block-start: 0;
+  margin-block-end: 0;
+`;
+
+export const TextWarning = styled.p`
+  color: yellow;
   margin-block-start: 0;
   margin-block-end: 0;
 `;

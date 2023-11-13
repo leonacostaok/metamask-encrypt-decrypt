@@ -21,6 +21,9 @@ export function HowTo({ isActive }: {
                 </Link>.
             </Text>
             <Text>
+                MetaMask APIs have certain mobile limitations, for this reason these functions can only be used on the desktop version.
+            </Text>
+            <Text>
                 It works with asymmetric cryptography to encrypt and decrypt messages.
             </Text>
             <Text>

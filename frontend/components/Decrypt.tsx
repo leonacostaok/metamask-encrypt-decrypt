@@ -2,7 +2,7 @@ import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
 
 import { Tab } from "./Tab";
-import {Text, TextRed} from "./Text";
+import {Text, TextError} from "./Text";
 import {Button} from "./Button";
 import {TextArea} from "./TextArea";
 
@@ -60,7 +60,7 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
           <Button onClick={handleDecrypt}>Decrypt</Button>
         </>
       )}
-      {error && <TextRed>{error}</TextRed>}
+      {error && <TextError>{error}</TextError>}
     </Tab>
   );
 }
