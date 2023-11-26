@@ -1,9 +1,9 @@
 import RCTable from "rc-table";
 import {shortenAddress} from "../utils";
-import {EncryptedMessage} from "../models/EncryptedMessage";
+import {SharedMessage} from "../models/SharedMessage";
 
 interface TableProps {
-    data: EncryptedMessage[]
+    data: SharedMessage[]
 }
 
 export const Table = ({data}: TableProps) => {

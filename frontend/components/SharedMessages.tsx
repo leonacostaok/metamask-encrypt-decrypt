@@ -3,7 +3,7 @@ import {TabOptions} from "../pages";
 import {styled} from "styled-components";
 import {Table} from "./Table";
 
-export function Shared({ isActive }: {
+export function SharedMessages({ isActive }: {
   setActiveTab?: (el: TabOptions) => void
   isActive: boolean
 }) {

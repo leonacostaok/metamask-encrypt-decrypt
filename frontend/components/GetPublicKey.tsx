@@ -27,9 +27,8 @@ export function GetPublicKey({ isActive }: { isActive: boolean }) {
             setCopied(true)
             setTimeout(() => setCopied(false), 3000)
           }}>
-            <Button>Copy</Button>
+            <Button disabled={copied}>{copied ? 'Copied!' : 'Copy'}</Button>
           </CopyToClipboard>
-          {copied && <Text>Copied!</Text>}
         </>
       ) : (
         <>

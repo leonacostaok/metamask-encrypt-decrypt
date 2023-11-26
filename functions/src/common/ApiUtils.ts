@@ -1,4 +1,4 @@
-import {ApiHandler, usePathParam} from "sst/node/api";
+import {ApiHandler, useHeaders} from "sst/node/api";
 import {findProfileByChallenge, updateProfileChallenge} from "../profiles/ProfilesService";
 import { verifyMessage } from '@ethersproject/wallet';
 import {AUTH_MESSAGE} from "../auth/AuthConstants";
@@ -39,8 +39,7 @@ export const ValidateChallengeApiHandler = (
     ) => ReturnType<Parameters<typeof ApiHandler>[0]>
 ) => {
     return ApiHandler(async (event, context) => {
-        const challenge = usePathParam('challenge');
-        const signature = usePathParam('signature');
+        const {challenge, signature} = useHeaders();
 
         // requires challenge and signature to have values
         if (!challenge || !signature)

@@ -1,6 +1,6 @@
 import { Decrypt } from "components/Decrypt";
 import { Encrypt } from "components/Encrypt";
-import { Shared } from "components/Shared";
+import { SharedMessages } from "components/SharedMessages";
 import { GetPublicKey } from "components/GetPublicKey";
 import { Tab } from "components/Tab";
 import React, { useState } from "react";
@@ -12,7 +12,7 @@ export enum TabOptions {
   DECRYPT,
   GET_PUBLIC_KEY,
   HOW_TO,
-  SHARED
+  SHARED_MESSAGES
 }
 
 interface TabType {
@@ -34,7 +34,7 @@ const tabsList: TabType[] = [
   },
   { tab: TabOptions.ENCRYPT, name: "Encrypt", content: Encrypt },
   { tab: TabOptions.DECRYPT, name: "Decrypt", content: Decrypt },
-  { tab: TabOptions.SHARED, name: "Shared", content: Shared },
+  { tab: TabOptions.SHARED_MESSAGES, name: "Shared Messages", content: SharedMessages },
 ];
 export default function Home() {
   const [activeTab, setActiveTab] = useState(TabOptions.HOW_TO);
