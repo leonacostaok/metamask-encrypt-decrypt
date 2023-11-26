@@ -5,12 +5,15 @@ import { Tab } from "./Tab";
 import {Text, TextError} from "./Text";
 import {Button} from "./Button";
 import {TextArea} from "./TextArea";
+import styled from "styled-components";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 export function Decrypt({ isActive }: { isActive: boolean }) {
   const { account, provider } = useWeb3React();
   const [encryptedMessage, setEncryptedMessage] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false)
 
   const handleDecrypt = async () => {
     if (encryptedMessage !== "")
@@ -45,7 +48,15 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
             placeholder="Lorem impsum ..."
             value={message}
           />
+          <ButtonWrapper>
           <Button onClick={handleClear}>Clear</Button>
+          <CopyToClipboard text={encryptedMessage} onCopy={() => {
+            setCopied(true)
+            setTimeout(() => setCopied(false), 3000)
+          }}>
+            <Button disabled={copied}>{copied ? 'Copied!' : 'Copy'}</Button>
+          </CopyToClipboard>
+          </ButtonWrapper>
         </>
       ) : (
         <>
@@ -65,4 +76,9 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
   );
 }
 
-
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+`
