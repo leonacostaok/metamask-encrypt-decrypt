@@ -5,13 +5,12 @@ import {successResponse} from "../common/ApiUtils";
 import {generateChallenge} from "./AuthUtils";
 
 export const challenge = ApiHandler(async () => {
-    const address = usePathParam('userAddress');
+    let address = usePathParam('userAddress');
     console.log(`Getting challenge for userAddress: ${address}`);
-    const userAddress = getAddress(address);
-    const { email } = useQueryParams();
+    address = address ? getAddress(address) : undefined;
 
     // validate if address is not valid
-    if (!userAddress) {
+    if (!address) {
         console.log(`Invalid user address ${address}`);
         return {
             statusCode: 400,
@@ -19,8 +18,8 @@ export const challenge = ApiHandler(async () => {
         }
     }
 
-    const userProfile = await findProfileByAddress(userAddress);
-    const challengeResponse = generateChallenge(userAddress);
+    const userProfile = await findProfileByAddress(address);
+    const challengeResponse = generateChallenge(address);
 
     if (userProfile) {
 
@@ -28,14 +27,14 @@ export const challenge = ApiHandler(async () => {
             `Assigning challenge ${challengeResponse.challenge} to ${address}.`
         );
         // I assign challenge to user
-        await updateProfileChallenge(userAddress, challengeResponse.challenge);
+        await updateProfileChallenge(address, challengeResponse.challenge);
     } else {
         console.log(
             `Creating profile to ${address} with challenge ${challengeResponse.challenge}.`
         );
         // I create a new user profile and assign the challenge
         await createProfile({
-            userAddress,
+            userAddress: address,
             challenge: challengeResponse.challenge,
         });
     }
