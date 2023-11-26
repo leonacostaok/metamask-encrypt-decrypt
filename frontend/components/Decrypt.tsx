@@ -50,7 +50,7 @@ export function Decrypt({ isActive }: { isActive: boolean }) {
           />
           <ButtonWrapper>
           <Button onClick={handleClear}>Clear</Button>
-          <CopyToClipboard text={encryptedMessage} onCopy={() => {
+          <CopyToClipboard text={message} onCopy={() => {
             setCopied(true)
             setTimeout(() => setCopied(false), 3000)
           }}>
