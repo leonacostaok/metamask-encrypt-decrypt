@@ -1,9 +1,10 @@
-import { ApiHandler, usePathParam, useQueryParams } from 'sst/node/api';
+import { ApiHandler, usePathParam } from 'sst/node/api';
 import {getAddress} from "@ethersproject/address";
 import {createProfile, findProfileByAddress, updateProfileChallenge} from "../profiles/ProfilesService";
 import {successResponse} from "../common/ApiUtils";
 import {generateChallenge} from "./AuthUtils";
 
+// creates a new challenge and assigns it to a user address
 export const challenge = ApiHandler(async () => {
     let address = usePathParam('userAddress');
     console.log(`Getting challenge for userAddress: ${address}`);

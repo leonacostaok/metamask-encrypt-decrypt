@@ -30,6 +30,7 @@ export const errorResponse = (message: string, statusCode: RequestStatus) => {
     };
 };
 
+// middleware: validates if the challenge belongs to this address signing the request before continuing
 export const ValidateChallengeApiHandler = (
     impl: (
         userAddress: string,
@@ -41,24 +42,30 @@ export const ValidateChallengeApiHandler = (
         const challenge = usePathParam('challenge');
         const signature = usePathParam('signature');
 
+        // requires challenge and signature to have values
         if (!challenge || !signature)
             return errorResponse(
                 `${challenge} or ${signature} are required.`,
                 RequestStatus.BAD_REQUEST
             );
 
+        // checks if a profile with the challenge attached exists
         const profileItem = await findProfileByChallenge(challenge);
 
         if (profileItem) {
+            // gets signature verified signer
             const verifiedUserAddress = verifyMessage(
                 AUTH_MESSAGE + challenge,
                 signature
             );
+
+            // checks whether the message signer is the one with the challenge attached
             if (verifiedUserAddress === profileItem.userAddress) {
                 await updateProfileChallenge(
                     verifiedUserAddress,
                     undefined
                 );
+                // continues execution of the API
                 return impl(getAddress(verifiedUserAddress), event, context);
             } else
                 return errorResponse(

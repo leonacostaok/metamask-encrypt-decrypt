@@ -6,7 +6,7 @@ import {
     findSharedMessagesByToPublicKey
 } from "./SharedMessagesService";
 import {v4} from "uuid";
-import * as moment from "moment"
+import moment from 'moment';
 
 export const _post = ValidateChallengeApiHandler(async (userAddress) => {
     const {toPublicKey, message, ttl} = useJsonBody()
