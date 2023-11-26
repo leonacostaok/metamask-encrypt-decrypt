@@ -12,13 +12,11 @@ export function GetPublicKey({ isActive }: { isActive: boolean }) {
   const [publicKey, setPublicKey] = useState<string | null>(null);
   const [copied, setCopied] = useState(false)
 
-  useEffect(() => {
-    setPublicKey(null);
-  }, [account]);
+  useEffect(() => setPublicKey(null), [account]);
 
-  const handleRequestPublicKey = async () => {
+  const handleRequestPublicKey = async () =>
     setPublicKey(await provider.send("eth_getEncryptionPublicKey", [account]));
-  };
+
   return (
     <Tab isActive={isActive} requiresConnection={true}>
       {publicKey ? (

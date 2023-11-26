@@ -1,8 +1,8 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "exclude": ["frontend", "functions"],
   "compilerOptions": {
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "."
   }
 }

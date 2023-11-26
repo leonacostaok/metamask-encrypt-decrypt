@@ -1,6 +1,8 @@
 import { SSTConfig } from "sst";
 
 import { StaticSites } from "./stacks/StaticSites";
+import {DynamoTables} from "./stacks/DynamoTables";
+import {Apis} from "./stacks/Apis";
 
 export default {
   config() {
@@ -11,6 +13,6 @@ export default {
     };
   },
   stacks(app) {
-    app.stack(StaticSites);
+    app.stack(DynamoTables).stack(Apis).stack(StaticSites);
   },
 } satisfies SSTConfig;

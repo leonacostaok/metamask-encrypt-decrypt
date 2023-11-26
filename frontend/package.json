@@ -1,7 +1,7 @@
 {
   "private": true,
-  "version": "8.2.11",
-  "name": "@dandelionlabs/metamask-encrypt-decript",
+  "version": "1.0.0",
+  "name": "@dandelionlabs/med-frontend",
   "scripts": {
     "start": "next dev",
     "build": "next build",
