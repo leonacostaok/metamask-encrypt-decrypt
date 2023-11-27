@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TextArea = styled.textarea`
   width: 100%;
-  min-height: 150px;
+  max-height: 150px;
   background: rgba(255, 255, 255, 0.09);
   padding: 5px 10px;
   color: white;

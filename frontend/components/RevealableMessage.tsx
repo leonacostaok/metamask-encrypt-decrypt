@@ -38,7 +38,7 @@ export default function RevealableMessage({encryptedMessage}: RevealableMessageP
     return revealedMessage ? (
         <RevealableMessageWrapper>
             <TextArea disabled={true}>{revealedMessage}</TextArea>
-            <CopyToClipboard text={encryptedMessage} onCopy={() => {
+            <CopyToClipboard text={revealedMessage} onCopy={() => {
                 setCopied(true)
                 setTimeout(() => setCopied(false), 3000)
             }}>
