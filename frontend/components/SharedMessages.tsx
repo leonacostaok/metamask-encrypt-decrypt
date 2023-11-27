@@ -32,16 +32,23 @@ export function SharedMessages({ isActive }: {
 
     const handleGetMessages = async () => {
         try {
-            const response = await get(`shared-messages${publicKey ? `?toPublicKey=${publicKey}` : ''}`)
+            const response = await get(`shared-messages${publicKey ? `?toPublicKey=${encodeURIComponent((publicKey))}` : ''}`)
 
             if (response && 'data' in (response as any)) {
                 const {sent, received} = (response as any).data
                 let sharedMessagesList = Array.from(sent).concat(Array.from(received)) as SharedMessage[]
-                sharedMessagesList = sharedMessagesList.sort((sm, sm2) => sm.id < sm2.id ? -1 : 0)
-                setSharedMessages(removeDuplicates(sharedMessagesList));
+                if (sharedMessagesList.length > 0) {
+                    sharedMessagesList = sharedMessagesList.sort((sm, sm2) => sm.id < sm2.id ? -1 : 0);
+                    setSharedMessages(removeDuplicates(sharedMessagesList));
+                } else {
+                    setSharedMessages([])
+                }
+            } else {
+                setSharedMessages([])
             }
         } catch (e) {
             console.error(e);
+            setSharedMessages([])
         }
     }
   return (

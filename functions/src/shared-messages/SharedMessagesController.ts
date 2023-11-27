@@ -33,7 +33,7 @@ export const _get = ValidateChallengeApiHandler(async (userAddress) => {
 
     const sent = await findSharedMessagesBySender(userAddress)
 
-    const received = toPublicKey ? await findSharedMessagesByToPublicKey(toPublicKey) : []
+    const received = toPublicKey ? await findSharedMessagesByToPublicKey(decodeURI(toPublicKey)) : []
 
     return successResponse({sent,received})
 });
